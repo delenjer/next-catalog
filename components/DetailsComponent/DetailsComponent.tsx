@@ -2,14 +2,17 @@
 
 import {useQuery} from 'react-query';
 import {catalogDetails} from '@/api/api';
+import {FC} from 'react';
 
-export const DetailsComponent = ({ id }:string) => {
+type DetailsComponentProps = {
+  id: string;
+}
+
+export const DetailsComponent:FC<DetailsComponentProps> = ({ id }) => {
   const { data, isLoading } = useQuery(
     ['details', id],
     () => catalogDetails(id)
   );
-
-  console.log(data)
 
   return (
     <h3>Details</h3>
